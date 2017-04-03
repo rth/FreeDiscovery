@@ -41,3 +41,6 @@ doc/modules/
 doc/examples/
 doc/generated/
 treclegal09*.tar.gz
+benchmarks/_html/
+benchmarks/_results/
+benchmarks/env/

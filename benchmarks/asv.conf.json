@@ -1,0 +1,31 @@
+{
+    "version": 1,
+
+    "project": "FreeDiscovery",
+
+    "project_url": "https://github.com/FreeDiscovery/FreeDiscovery",
+
+    "repo": "../",
+
+    "branches": ["master"],
+
+    "environment_type": "conda",
+
+    "install_timeout": 600,
+
+    "show_commit_url": "https://github.com/FreeDiscovery/FreeDiscovery/commit/",
+
+    "pythons": ["3.6"],
+
+    "matrix": {},
+
+    "benchmark_dir": "benchmarks",
+
+    "env_dir": "env",
+
+    "results_dir": "_results",
+
+    "html_dir": "_html",
+
+    "hash_length": 8
+}
