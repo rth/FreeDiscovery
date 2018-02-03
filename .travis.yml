@@ -5,6 +5,7 @@ dist: trusty
 env:
     global:
     - CONDA_CHANNELS="defaults conda-forge"
+      CONDA_CHANNEL_PRIORITY=true
     matrix:
     - PYTHON_VERSION="3.6"
       REQUIREMENTS="requirements_engine.txt" EXTRA_DEPS="nose"
@@ -26,19 +27,21 @@ install:
         source activate test
         conda install --file ${REQUIREMENTS}
         conda install ${EXTRA_DEPS} pytest-cov codecov
-        if [ -z SKLEARN_DEV ]; then
+        if [ -z ${SKLEARN_DEV} ]; then
             conda uninstall -y scikit-learn
+            conda install -y cython
             pip install git+https://github.com/scikit-learn/scikit-learn.git
         fi
+        python -c "import sklearn; print('scikit-learn ', sklearn.__version__)"
         pip install .
 
 script:
     - |
         source activate test
         if [[ ${REQUIREMENTS} == "requirements_engine.txt" ]]; then
-            py.test -sv --cov=./ .
+            py.test --cov=./ .
         else
-            py.test -sv --cov=./ ./freediscovery/tests/
+            py.test --cov=./ ./freediscovery/tests/
         fi
 
     - | 
